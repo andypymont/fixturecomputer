@@ -18,7 +18,7 @@ def matchup(teamlist, reverse=False):
 	else:
 		return zip(hosts, visitors)
 
-def fixtures(teams, rounds=1, shuffle_first=True):
+def fixtures(teams, rounds=1, shuffle_first=True, shuffle_fixtures=True):
 
 	if len(teams) % 2 == 1: # odd number of teams; add a bye
 		teams = list(teams) + ['bye']
@@ -32,7 +32,8 @@ def fixtures(teams, rounds=1, shuffle_first=True):
 		teams = rotate(teams)
 		fixtures.append(teams)
 
-	random.shuffle(fixtures)
+	if shuffle_fixtures:
+		random.shuffle(fixtures)
 
 	final_fixtures = []
 
